@@ -1,0 +1,18 @@
+{
+  "name": "png-quality",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Kunihiko Miyanaga <miyanaga@ideamans.com>",
+  "description": "Calculates MSE/PSNR of two PNG images.",
+  "license": "MIT",
+  "scripts": {
+    "test": "ava -v",
+    "watch": "ava -vw"
+  },
+  "dependencies": {
+    "pngjs": "^3.3.3"
+  },
+  "devDependencies": {
+    "ava": "^1.1.0"
+  }
+}
