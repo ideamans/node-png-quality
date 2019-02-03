@@ -3,19 +3,23 @@ const { PNG } = require('pngjs'),
   _ = require('lodash');
 
 class PngCompare {
-  static async loadPngFile(path) {
-    return new Promise((resolve, reject) => {
-      fs.readFile(path, (err, data) => {
-        if (err) return reject(err)
-        resolve(data)
-      });
-    }).then(buffer => {
-      return new Promise((resolve, reject) => {
-        const png = new PNG(this.pngOptions)
-        png.parse(buffer, err => {
+  static async loadPngFile(pathOrBuffer) {
+    // Load buffer of path
+    if (!(pathOrBuffer instanceof Buffer)) {
+      pathOrBuffer = await new Promise((resolve, reject) => {
+        fs.readFile(pathOrBuffer, (err, data) => {
           if (err) return reject(err)
-          resolve(png)
-        })
+          resolve(data)
+        });
+      })
+    }
+
+    // Load PNG from buffer
+    return new Promise((resolve, reject) => {
+      const png = new PNG(this.pngOptions)
+      png.parse(pathOrBuffer, err => {
+        if (err) return reject(err)
+        resolve(png)
       })
     })
   }
@@ -23,9 +27,9 @@ class PngCompare {
   static async mse(png1, png2) {
     const pngs = [png1, png2];
     for (let i in pngs) {
-      if (_.isString(pngs[i])) pngs[i] = await this.loadPngFile(pngs[i])
+      if (!(pngs[i] instanceof PNG)) pngs[i] = await this.loadPngFile(pngs[i])
     }
- 
+
     if (pngs[0].width !== pngs[1].width || pngs[0].height !== pngs[1].height) {
       throw new Error('Width or height does not equal')
     }
