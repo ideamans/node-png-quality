@@ -1,6 +1,6 @@
 {
   "name": "png-quality",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "index.js",
   "author": "Kunihiko Miyanaga <miyanaga@ideamans.com>",
   "description": "Calculates MSE/PSNR of two PNG images.",
