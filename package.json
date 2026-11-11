@@ -13,6 +13,6 @@
     "pngjs": "^3.3.3"
   },
   "devDependencies": {
-    "ava": "^1.1.0"
+    "ava": "^8"
   }
 }

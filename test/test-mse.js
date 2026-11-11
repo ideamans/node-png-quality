@@ -1,7 +1,7 @@
-import test from 'ava'
-import PngCompare from '../'
-import Path from 'path'
-import Fs from 'fs'
+const test = require('ava').default
+const PngCompare = require('../')
+const Path = require('path')
+const Fs = require('fs')
 
 test('Compare png8 and png24', async t => {
   const mse = await PngCompare.mse(

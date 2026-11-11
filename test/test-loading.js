@@ -1,6 +1,6 @@
-import test from 'ava'
-import PngCompare from '../'
-import Path from 'path'
+const test = require('ava').default
+const PngCompare = require('../')
+const Path = require('path')
 
 test('Loading png file', async t => {
   const png = await PngCompare.loadPngFile(Path.join(__dirname, 'sample/white2x2-png8.png'))
