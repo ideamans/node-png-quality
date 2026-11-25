@@ -10,7 +10,7 @@
     "watch": "ava -vw"
   },
   "dependencies": {
-    "pngjs": "^3.3.3"
+    "pngjs": "^7.0.0"
   },
   "devDependencies": {
     "ava": "^8"
